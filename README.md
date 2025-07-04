@@ -6,7 +6,7 @@ Built to demonstrate how **AI + geospatial analysis** can assist infrastructure 
 
 ---
 
-## 📍 Features
+##  Features
 
 ✅ Fetches **real GIS data** (buildings, roads) from OpenStreetMap  
 ✅ Generates candidate turbine locations and extracts features  
@@ -19,7 +19,7 @@ Built to demonstrate how **AI + geospatial analysis** can assist infrastructure 
 
 ---
 
-## 🧠 Use Case
+##  Use Case
 
 This prototype simulates the **early-stage evaluation** phase of wind turbine approval:
 - Automatically identifies **suitable locations** that are far enough from buildings and roads
@@ -28,15 +28,15 @@ This prototype simulates the **early-stage evaluation** phase of wind turbine ap
 
 ---
 
-## 🌐 Live Demo
+## Live Demo
 
-👉 [Launch the App on Streamlit Cloud](https://your-streamlit-url.streamlit.app)  
+👉 [Launch the App on Streamlit Cloud](https://wind-turbine-app.streamlit.app/)
 
 ---
 
-## 🛠️ How to Run Locally
+##  How to Run Locally
 
-### 1. Clone the Repo
+### Clone the Repo
 
 ```bash
 git clone https://github.com/savdn/wind-turbine-streamlit.git
