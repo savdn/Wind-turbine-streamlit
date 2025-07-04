@@ -1,0 +1,9 @@
+streamlit
+osmnx>=1.3
+geopandas
+folium
+streamlit-folium
+scikit-learn
+pandas
+numpy
+shapely
