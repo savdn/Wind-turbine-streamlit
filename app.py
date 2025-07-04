@@ -81,9 +81,6 @@ if st.button("📡 Load and Analyze Area"):
             )
         ).add_to(m)
 
-    # Add scale and legend
-    folium.plugins.Scale().add_to(m)
-
     legend_html = """
     {% macro html() %}
     <div style='position: fixed; bottom: 50px; left: 50px; width: 160px; height: 90px;
