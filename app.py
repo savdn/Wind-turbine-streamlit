@@ -12,11 +12,11 @@ from branca.element import Template, MacroElement
 
 # Page Config
 st.set_page_config(page_title="Wind Turbine Suitability", layout="wide")
-st.title("🛰️ AI-Based Wind Turbine Suitability using Real GIS Data")
+st.title("🛰️ AI-Based Wind Turbine Suitability using GIS Data")
 
 place = st.text_input("Enter location (e.g., 'Weimar, Thuringia, Germany')", "Weimar, Thuringia, Germany")
 
-if st.button("📡 Load and Analyze Area"):
+if st.button("Load and Analyze Area"):
     with st.spinner("Loading data..."):
         # Load OSM data
         buildings = ox.geometries_from_place(place, tags={"building": True})
@@ -46,11 +46,11 @@ if st.button("📡 Load and Analyze Area"):
     score = silhouette_score(X, points["cluster"])
 
     # Exclusion rule
-    points["excluded"] = (points["dist_building"] < 100) | (points["elev"] < 120)
+    points["excluded"] = (points["dist_building"] < 300) | (points["elev"] < 120)
 
     # Summary stats
-    st.markdown(f"**Silhouette Score**: `{score:.2f}`")
-    st.markdown(f"✅ Suitable points: `{(~points['excluded']).sum()}` | ❌ Excluded: `{points['excluded'].sum()}`")
+    st.markdown(f"**Silhouette Score**: {score:.2f}")
+    st.markdown(f"✅ Suitable points: {(~points['excluded']).sum()} | ❌ Excluded: {points['excluded'].sum()}")
 
     # Reproject for folium
     points = points.to_crs(epsg=4326)
@@ -100,7 +100,7 @@ if st.button("📡 Load and Analyze Area"):
     folium_static(m)
 
     # DATA TABLE
-    st.subheader("📋 Site Evaluation Table")
+    st.subheader("Site Evaluation Table")
     st.dataframe(points[["elev", "dist_building", "dist_road", "excluded", "cluster"]])
 
     # FILTERED MAP — ONLY SUITABLE POINTS
