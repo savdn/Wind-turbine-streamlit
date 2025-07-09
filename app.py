@@ -19,7 +19,10 @@ place = st.text_input("Enter location (e.g., 'Weimar, Thuringia, Germany')", "We
 if st.button("Load and Analyze Area"):
     with st.spinner("Loading data..."):
         # Load OSM data
-        buildings = ox.geometries_from_place(place, tags={"building": True})
+        gdf_place = ox.geocode_to_gdf(place)
+        polygon = gdf_place.iloc[0].geometry
+        buildings = ox.geometries_from_polygon(polygon, tags={"building": True})
+
         G = ox.graph_from_place(place, network_type='drive')
         _, roads = ox.graph_to_gdfs(G)
 
